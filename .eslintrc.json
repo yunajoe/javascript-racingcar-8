@@ -1,7 +1,15 @@
 {
-  // "extends": "airbnb-base",
+  "extends": "airbnb-base",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
+  },
+  "rules": {
+    "no-undef": "off",
+    "import/extensions": "off",
+    "arrow-body-style": "off",
+    "comma-dangle": "off",
+    "class-methods-use-this": "off",
+    "no-empty-function": "off"
   }
 }
