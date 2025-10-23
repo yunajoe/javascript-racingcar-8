@@ -47,17 +47,17 @@ describe('자동차 경주', () => {
   });
 
   describe('자동차 이름 입력 예외 테스트', () => {
-    test.each(
-      ['자동차 이름이 1개만 입려된 경우', ['yuna', '1']],
-      ['자동차 이름이 빈 문자열로만 입력된 경우', ['', '1']],
-      ['자동차 이름이 빈 문자열로만 입력된 경우(2)', ['       ', '1']]
-    )('%s', async (inputs) => {
-      mockQuestions(inputs);
-      const app = new App();
-      await expect(app.run()).rejects.toThrow(
-        '[ERROR] 최소 2개 이상의 자동차 이름을 입력해야합니다.'
-      );
-    });
+    test.each([[['yuna', '1']], [['', '1']], [['       ', '1']]])(
+      '%s',
+      async (inputs) => {
+        mockQuestions(inputs);
+        const app = new App();
+        await expect(app.run()).rejects.toThrow(
+          '[ERROR] 최소 2개 이상의 자동차 이름을 입력해야합니다.'
+        );
+      }
+    );
+
     test.each(
       ['자동차 이름이 5글자가 넘어간 경우', ['abc, abdefgh', '1']],
       ['자동차 이에 공백이 있는 경우', ['abc, abce   fgg', '1']]
@@ -79,7 +79,6 @@ describe('자동차 경주', () => {
       );
     });
   });
-
   test('예외 테스트', async () => {
     // given
     const inputs = ['pobi,javaji'];
