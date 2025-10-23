@@ -3,16 +3,12 @@ import ValidationError from './errors/validation-error.js';
 
 class App {
   async run() {
-    try {
-      const input = await Console.readLineAsync(
-        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
-      );
-      const trimmedInput = input.trim();
-      if (trimmedInput.length === 0) {
+    const readInput = (input) => {
+      if (input.length === 0) {
         throw new ValidationError('NOT_SATISFIED_PROPER_NAME');
       }
 
-      const splitInput = trimmedInput.split(',');
+      const splitInput = input.split(',');
       if (splitInput.length <= 1) {
         throw new ValidationError('NOT_SATISFIED_NUMBER_OF_CAR');
       }
@@ -25,7 +21,6 @@ class App {
       }
 
       const regex = /\s/;
-
       trimmedArr.forEach((input) => {
         const isBlankInclude = regex.test(input);
         if (isBlankInclude) {
@@ -35,6 +30,14 @@ class App {
           throw new ValidationError('NOT_SATISFIED_PROPER_NAME');
         }
       });
+      return trimmedArr;
+    };
+    try {
+      const input = await Console.readLineAsync(
+        '경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)\n'
+      );
+      const trimmedInput = input.trim();
+      readInput(trimmedInput);
     } catch (error) {
       throw error;
     }
