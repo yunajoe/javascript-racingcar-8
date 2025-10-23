@@ -9,22 +9,29 @@ class App {
       );
       const trimmedInput = input.trim();
       if (trimmedInput.length === 0) {
-        throw new ValidationError('NOT_SATISFIED_MIN_LENGTH');
+        throw new ValidationError('NOT_SATISFIED_PROPER_NAME');
       }
+
       const splitInput = trimmedInput.split(',');
       if (splitInput.length <= 1) {
-        throw new ValidationError('NOT_SATISFIED_MIN_LENGTH');
+        throw new ValidationError('NOT_SATISFIED_NUMBER_OF_CAR');
+      }
+
+      const trimmedArr = splitInput.map((input) => input.trim());
+
+      const setArray = Array.from([...new Set(trimmedArr)]);
+      if (trimmedArr.length !== setArray.length) {
+        throw new ValidationError('DUPLICATED_NAME');
       }
 
       const regex = /\s/;
 
-      splitInput.forEach((input) => {
-        const trimmedInput = input.trim();
-        const isBlankInclude = regex.test(trimmedInput);
-        if (trimmedInput.length > 5) {
-          throw new ValidationError('NOT_SATISFIED_PROPER_NAME');
-        }
+      trimmedArr.forEach((input) => {
+        const isBlankInclude = regex.test(input);
         if (isBlankInclude) {
+          throw new ValidationError('NOT_ALLOWED_NAME');
+        }
+        if (!(input.length >= 1 && input.length <= 5)) {
           throw new ValidationError('NOT_SATISFIED_PROPER_NAME');
         }
       });
