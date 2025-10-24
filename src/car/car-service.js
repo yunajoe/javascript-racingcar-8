@@ -58,6 +58,22 @@ class CarService {
       }
       Console.print('\n');
     });
+
+    // 최종 우승자를 계산하는 함수
+    const final = outputArr.slice(-1)[0];
+    const winnerObject = {};
+    for (const [key, value] of Object.entries(final)) {
+      winnerObject[key] = value.length;
+    }
+    const maxValue = Math.max(...Object.values(winnerObject));
+    const winnerNames = [];
+
+    for (const [key, value] of Object.entries(winnerObject)) {
+      if (value === maxValue) {
+        winnerNames.push(key);
+      }
+    }
+    Console.print(`최종 우승자 : ${winnerNames.join(', ')}`);
   }
 }
 
