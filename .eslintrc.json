@@ -12,6 +12,7 @@
     "class-methods-use-this": "off",
     "no-empty-function": "off",
     "no-shadow": "off",
-    "no-useless-catch": "off"
+    "no-useless-catch": "off",
+    "operator-linebreak": "off"
   }
 }

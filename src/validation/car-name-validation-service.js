@@ -45,6 +45,7 @@ class CarNameValidation {
       this.checkContainNotAllowedChar(input);
       this.checkNameLength(input);
     });
+    return inputArr;
   }
 }
 

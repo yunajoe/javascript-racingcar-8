@@ -24,6 +24,7 @@ class AttemptValidationService {
     const numInput = Number(input);
     this.checkValidType(numInput);
     this.checkAttemptCount(numInput);
+    return numInput;
   }
 }
 

@@ -6,9 +6,10 @@ class App {
   async run() {
     try {
       const carInput = await InputService.carNameInput();
-      CarNameValidation.carNameValidation(carInput);
+      const carNameList = CarNameValidation.carNameValidation(carInput);
       const attemptInput = await InputService.attemptInput();
-      AttemptValidationService.attemptValidation(attemptInput);
+      const attemptCount =
+        AttemptValidationService.attemptValidation(attemptInput);
     } catch (error) {
       throw error;
     }
