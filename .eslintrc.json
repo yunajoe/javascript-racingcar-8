@@ -13,6 +13,8 @@
     "no-empty-function": "off",
     "no-shadow": "off",
     "no-useless-catch": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-plusplus": "off",
+    "no-restricted-syntax": "off"
   }
 }
