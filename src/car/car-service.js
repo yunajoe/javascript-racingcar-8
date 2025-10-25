@@ -2,30 +2,38 @@ import { Console, MissionUtils } from '@woowacourse/mission-utils';
 import Car from './car-model.js';
 
 class CarService {
-  race(car) {
-    try {
-      const result = [];
-      if (car instanceof Car) {
-        const { carNameList, attemptCount } = car;
-        for (let i = 0; i < attemptCount; i++) {
-          const obj = {};
-          for (const car of carNameList) {
-            const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
-            obj[car] = randomNum;
-          }
-          result.push(obj);
-        }
-
-        this.printResult(result);
-      }
-    } catch (error) {
-      throw error;
+  calculateWinner(outputArr) {
+    const final = outputArr.slice(-1)[0];
+    const winnerObject = {};
+    for (const [key, value] of Object.entries(final)) {
+      winnerObject[key] = value.length;
     }
+    const maxValue = Math.max(...Object.values(winnerObject));
+    const winnerNames = [];
+
+    for (const [key, value] of Object.entries(winnerObject)) {
+      if (value === maxValue) {
+        winnerNames.push(key);
+      }
+    }
+    Console.print(`최종 우승자 : ${winnerNames.join(', ')}`);
   }
 
-  printResult(result) {
-    Console.print('\n');
-    Console.print('실행 결과');
+  makeRaceObject(car) {
+    const result = [];
+    const { carNameList, attemptCount } = car;
+    for (let i = 0; i < attemptCount; i++) {
+      const obj = {};
+      for (const car of carNameList) {
+        const randomNum = MissionUtils.Random.pickNumberInRange(0, 9);
+        obj[car] = randomNum;
+      }
+      result.push(obj);
+    }
+    return result;
+  }
+
+  calculateRaceProcedure(result) {
     const outputArr = [];
     while (result.length > 0) {
       const obj = result.shift();
@@ -51,6 +59,20 @@ class CarService {
         outputArr.push(newObj);
       }
     }
+    return outputArr;
+  }
+
+  race(car) {
+    if (car instanceof Car) {
+      const result = this.makeRaceObject(car);
+      const outputArr = this.calculateRaceProcedure(result);
+      this.printResult(outputArr);
+    }
+  }
+
+  printResult(outputArr) {
+    Console.print('\n');
+    Console.print('실행 결과');
 
     outputArr.forEach((output) => {
       for (const [key, value] of Object.entries(output)) {
@@ -59,21 +81,7 @@ class CarService {
       Console.print('\n');
     });
 
-    // 최종 우승자를 계산하는 함수
-    const final = outputArr.slice(-1)[0];
-    const winnerObject = {};
-    for (const [key, value] of Object.entries(final)) {
-      winnerObject[key] = value.length;
-    }
-    const maxValue = Math.max(...Object.values(winnerObject));
-    const winnerNames = [];
-
-    for (const [key, value] of Object.entries(winnerObject)) {
-      if (value === maxValue) {
-        winnerNames.push(key);
-      }
-    }
-    Console.print(`최종 우승자 : ${winnerNames.join(', ')}`);
+    this.calculateWinner(outputArr);
   }
 }
 
