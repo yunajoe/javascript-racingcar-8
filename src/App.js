@@ -12,7 +12,6 @@ class App {
       const attemptInput = await InputService.attemptInput();
       const attemptCount =
         AttemptValidationService.attemptValidation(attemptInput);
-
       const car = new Car(carNameList, attemptCount);
       const carService = new CarService();
       carService.race(car);
