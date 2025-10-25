@@ -44,14 +44,6 @@ class CarService {
     }, []);
   }
 
-  race(car) {
-    if (!(car instanceof Car)) return;
-    const result = this.makeRaceObject(car);
-    const outputArr = this.calculateRaceProcedure(result);
-    this.printRacingResult(outputArr);
-    this.printWinner(outputArr);
-  }
-
   printRacingResult(outputArr) {
     Console.print('\n');
     Console.print('실행 결과');
@@ -76,6 +68,14 @@ class CarService {
       .map(([key]) => key);
 
     Console.print(`최종 우승자 : ${winnerNames.join(', ')}`);
+  }
+
+  race(car) {
+    if (!(car instanceof Car)) return;
+    const result = this.makeRaceObject(car);
+    const outputArr = this.calculateRaceProcedure(result);
+    this.printRacingResult(outputArr);
+    this.printWinner(outputArr);
   }
 }
 
