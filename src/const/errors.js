@@ -6,9 +6,10 @@ const errorProperties = {
     '[ERROR] 자동차이름 갯수는 최소 2개 이상 사용해야 합니다.',
   NOT_ALLOWED_CHAR: '[ERROR] 자동차 이름에 공백은 허용이 안됩니다.',
   DUPLICATED_NAME: '[ERROR] 자동차 이름은 중복될 수 없습니다.',
-  NOT_MATCHED_TYPE: '[ERROR] 시도 횟수는 숫자 타입만 허용이 됩니다.',
+  NOT_MATCHED_ATTEMPT_TYPE: '[ERROR] 시도 횟수는 숫자 타입만 허용이 됩니다.',
   NOT_SATISFIED_ATTEMPT_COUNT:
     '[ERROR] 시도 횟수는 1번 이상으로 100번 이하로 작성해야 합니다.',
+  NOT_MATCHED_CAR_TYPE: '[ERROR] 유효한 자동차 타입이 아닙니다.',
 };
 
 export { errorProperties };

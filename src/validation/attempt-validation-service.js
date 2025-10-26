@@ -9,7 +9,7 @@ class AttemptValidationService {
 
   static checkValidType(input) {
     if (Number.isNaN(input)) {
-      throw new ValidationError('NOT_MATCHED_TYPE');
+      throw new ValidationError('NOT_MATCHED_ATTEMPT_TYPE');
     }
   }
 
