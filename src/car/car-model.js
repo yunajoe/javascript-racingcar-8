@@ -2,12 +2,12 @@ import ValidationError from '../errors/validation-error.js';
 
 class Car {
   constructor(carNameList, attemptCount) {
-    this.validate(carNameList, attemptCount);
+    this.#validate(carNameList, attemptCount);
     this.carNameList = carNameList;
     this.attemptCount = attemptCount;
   }
 
-  validate(carNameList, attemptCount) {
+  #validate(carNameList, attemptCount) {
     if (!Array.isArray(carNameList)) {
       throw new ValidationError('NOT_MATCHED_CAR_TYPE');
     }
