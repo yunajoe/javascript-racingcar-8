@@ -1,3 +1,5 @@
+import { errorProperties } from '../const/errors.js';
+
 class ValidationError extends Error {
   constructor(property) {
     super(errorProperties[property]);

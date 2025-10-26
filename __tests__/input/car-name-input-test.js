@@ -1,13 +1,5 @@
-import { MissionUtils } from '@woowacourse/mission-utils';
 import App from '../../src/App';
-
-const mockQuestions = (inputs) => {
-  MissionUtils.Console.readLineAsync = jest.fn();
-  MissionUtils.Console.readLineAsync.mockImplementation(() => {
-    const input = inputs.shift();
-    return Promise.resolve(input);
-  });
-};
+import { mockQuestions } from '../helper';
 
 describe('자동차 이름 입력 예외 테스트', () => {
   let app;
