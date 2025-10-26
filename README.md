@@ -50,3 +50,24 @@
 | **빈 문자열 입력 시 예외 처리 (시도 횟수)**          | `['car1,car2', '']`, `['car1,car2', '        ']`          | `[ERROR] 빈 문자열은 허용이 안됩니다.`                                |
 | **시도 횟수 숫자 타입이 아닐 경우 예외 처리**        | `['car1,car2', ',']`, `['car1,car2', 'abc']`              | `[ERROR] 시도 횟수는 숫자 타입만 허용이 됩니다.`                      |
 | **시도 횟수가 범위(1~100) 벗어날 경우 예외 처리**    | `['car1,car2', '0']`, `['car1,car2', '9007199254740991']` | `[ERROR] 시도 횟수는 1번 이상으로 100번 이하로 작성해야 합니다.`      |
+
+# 파일 구조
+
+```plaintext
+src
+┣ car
+┃ ┣ car-model.js
+┃ ┗ car-service.js
+┣ const
+┃ ┣ errors.js
+┃ ┗ validation.js
+┣ errors
+┃ ┗ validation-error.js
+┣ input
+┃ ┗ input-service.js
+┣ validation
+┃ ┣ attempt-validation-service.js
+┃ ┗ car-name-validation-service.js
+┣ App.js
+┗ index.js
+```
