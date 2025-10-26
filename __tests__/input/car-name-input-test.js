@@ -32,7 +32,7 @@ describe('자동차 이름 입력 예외 테스트', () => {
     async (inputs) => {
       mockQuestions(inputs);
       await expect(app.run()).rejects.toThrow(
-        '[ERROR] 자동차이름 갯수는 최소 2개 이상 사용해야 합니다.'
+        '[ERROR] 자동차이름 갯수는 최소 2개 이상 10개이하로 작성해야 합니다.'
       );
     }
   );

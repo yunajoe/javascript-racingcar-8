@@ -25,7 +25,7 @@ describe('Car 클래스', () => {
     test.each([[[]], [['car1']]])('자동차 갯수가 적을경우', (carNames) => {
       const attempts = 5;
       expect(() => new Car(carNames, attempts)).toThrow(
-        '[ERROR] 자동차이름 갯수는 최소 2개 이상 사용해야 합니다.'
+        '[ERROR] 자동차이름 갯수는 최소 2개 이상 10개이하로 작성해야 합니다.'
       );
     });
     test.each([0, 101])('시도 횟수가 1와 100사이가 아닌경우', (attempts) => {

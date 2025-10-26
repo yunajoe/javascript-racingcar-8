@@ -16,7 +16,7 @@ class CarNameValidation {
 
   static checkNumberOfCarName(input) {
     const splitInput = input.split(',').filter((item) => item.trim());
-    if (splitInput.length <= 1) {
+    if (splitInput.length <= 1 || splitInput.length > 10) {
       throw new ValidationError('NOT_SATISFIED_NUMBER_OF_CAR');
     }
     return splitInput;

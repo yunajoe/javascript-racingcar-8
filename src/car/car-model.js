@@ -11,7 +11,7 @@ class Car {
     if (!Array.isArray(carNameList)) {
       throw new ValidationError('NOT_MATCHED_CAR_TYPE');
     }
-    if (carNameList.length <= 1) {
+    if (carNameList.length <= 1 || carNameList.length > 10) {
       throw new ValidationError('NOT_SATISFIED_NUMBER_OF_CAR');
     }
     if (!(attemptCount >= 1 && attemptCount <= 100)) {
